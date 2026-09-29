@@ -1,0 +1,1609 @@
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #f7f3ed;
+    color: #3c3934;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =================================
+   GLOBAL
+================================= */
+
+.container {
+    width: min(1100px, 90%);
+    margin: auto;
+}
+
+.section {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.small-text {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.section-title > p {
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section-title h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(45px, 7vw, 80px);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.section-title h2 i {
+    font-weight: 400;
+}
+
+.light {
+    color: white;
+}
+
+
+/* =================================
+   OPENING
+================================= */
+
+
+/* =================================
+   OPENING COVER PREMIUM
+================================= */
+
+.opening {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    overflow: hidden;
+
+    background: #e8dfd2;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+/* COVER HILANG SAAT DIBUKA */
+
+.opening.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* FOTO BACKGROUND */
+
+.opening-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("assets/images/cover.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.05);
+
+    animation: coverZoom 12s ease-in-out infinite alternate;
+}
+
+/* LAPISAN WARNA */
+
+.opening-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(30, 25, 20, 0.15),
+            rgba(30, 25, 20, 0.45)
+        );
+
+    z-index: 1;
+}
+
+/* KONTEN COVER */
+
+.opening-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(600px, 90%);
+    padding: 30px 20px;
+
+    color: #fff;
+
+    animation: openingFade 1.5s ease both;
+}
+
+/* JUDUL KECIL */
+
+.opening-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+
+/* NAMA PASANGAN */
+
+.opening h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(65px, 12vw, 115px);
+    font-weight: 400;
+    line-height: 0.8;
+
+    margin: 25px 0;
+
+    text-shadow:
+        0 3px 25px rgba(0,0,0,0.15);
+}
+
+.opening h1 span {
+    display: block;
+
+    font-size: 0.4em;
+    font-style: italic;
+
+    margin: 18px 0;
+}
+
+/* GARIS PEMBATAS */
+
+.opening-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    margin: 30px auto;
+}
+
+.opening-divider span {
+    width: 45px;
+    height: 1px;
+    background: rgba(255,255,255,0.7);
+}
+
+.opening-divider i {
+    font-size: 12px;
+    font-style: normal;
+}
+
+/* TANGGAL */
+
+.opening-date {
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+/* TAMU UNDANGAN */
+
+.opening-guest {
+    margin: 45px 0 30px;
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.opening-guest h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 27px;
+    font-weight: 400;
+
+    margin: 5px 0 10px;
+}
+
+.guest-message {
+    max-width: 330px;
+    margin: auto;
+
+    font-size: 11px;
+    line-height: 1.9;
+
+    opacity: 0.9;
+}
+
+/* TOMBOL BUKA UNDANGAN */
+
+.opening-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 15px 28px;
+
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.08);
+    color: white;
+
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        background 0.4s ease,
+        transform 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.opening-button:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: white;
+
+    transform: translateY(-3px);
+}
+
+.opening-button-icon {
+    font-size: 17px;
+}
+
+/* FOOTER */
+
+.opening-footer {
+    margin-top: 45px;
+
+    font-size: 8px;
+    letter-spacing: 4px;
+
+    opacity: 0.7;
+}
+
+/* ANIMASI FOTO */
+
+@keyframes coverZoom {
+    from {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+/* ANIMASI KONTEN */
+
+@keyframes openingFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .opening-content {
+        padding: 20px 10px;
+    }
+
+    .opening-label {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+
+    .opening-guest {
+        margin: 35px 0 25px;
+    }
+
+    .opening-footer {
+        margin-top: 30px;
+    }
+
+}
+
+
+/* =================================
+   MAIN
+================================= */
+
+.hidden {
+    display: none;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: -5%;
+
+    background-image: url("assets/images/hero.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: #3c3934;
+}
+
+.hero-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(70px, 12vw, 150px);
+    font-weight: 400;
+    line-height: .75;
+    margin: 30px 0;
+}
+
+.hero-content h2 span {
+    display: block;
+    font-size: .35em;
+    margin: 15px;
+}
+
+
+/* =================================
+   QUOTE
+================================= */
+
+.quote {
+    text-align: center;
+    background: #f7f3ed;
+}
+
+.quote-mark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 100px;
+    line-height: .5;
+}
+
+.quote-text {
+    max-width: 650px;
+    margin: 30px auto;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.3;
+}
+
+.quote-source {
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.quote-left {
+    width: 300px;
+    left: -120px;
+    top: 50%;
+}
+
+
+/* =================================
+   COUPLE
+================================= */
+
+.couple {
+    background: #e9e0d4;
+}
+
+.couple-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.person {
+    text-align: center;
+}
+
+.person-photo {
+    width: 280px;
+    height: 360px;
+    margin: auto auto 30px;
+    overflow: hidden;
+    border-radius: 125px 125px 10px 10px;
+}
+
+.person-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s ease;
+}
+
+.person:hover img {
+    transform: scale(1.05);
+}
+
+.person h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.role {
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin: 10px 0;
+}
+
+.person p {
+    line-height: 1.7;
+    font-size: 12px;
+}
+
+.social {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #3c3934;
+}
+
+
+/* =================================
+   COUNTDOWN
+================================= */
+
+.countdown-section {
+    background: #35312c;
+    color: white;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.time-box {
+    text-align: center;
+}
+
+.time-box span {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 70px;
+    font-weight: 400;
+}
+
+.time-box small {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+/* =================================
+   EVENT
+================================= */
+
+.event {
+    background: #f7f3ed;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.event-card {
+    background: #e9e0d4;
+    text-align: center;
+    padding: 60px 30px;
+}
+
+.event-icon {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.event-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 45px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.event-card p {
+    font-size: 12px;
+    line-height: 2;
+}
+
+.event-date {
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.map-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    border: 1px solid #3c3934;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.event-flower {
+    width: 350px;
+    right: -130px;
+    bottom: -80px;
+}
+
+
+/* =================================
+   GALLERY
+================================= */
+
+.gallery {
+    background: #e9e0d4;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+    object-fit: cover;
+    transition: transform .8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.07);
+}
+
+
+/* =================================
+   RSVP
+================================= */
+
+.rsvp {
+    text-align: center;
+    background: #f7f3ed;
+}
+
+.rsvp-text {
+    max-width: 500px;
+    margin: auto auto 30px;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.rsvp-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #35312c;
+    color: white;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+/* =================================
+   CLOSING
+================================= */
+
+.closing {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.closing-bg {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(30, 27, 23, .45),
+            rgba(30, 27, 23, .7)
+        ),
+        url("assets/images/closing.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.closing-content {
+    position: relative;
+    z-index: 2;
+}
+
+.closing-content p {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.closing h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(70px, 12vw, 140px);
+    font-weight: 400;
+    line-height: .8;
+    margin: 40px 0;
+}
+
+.closing h2 span {
+    display: block;
+    font-size: .35em;
+}
+
+.closing-date {
+    letter-spacing: 5px;
+}
+
+.closing-flower {
+    width: 450px;
+    bottom: -130px;
+    left: -100px;
+}
+
+
+
+/* =================================
+   MUSIC
+================================= */
+
+.music-button {
+    position: fixed;
+    z-index: 5000;
+    right: 20px;
+    bottom: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.5);
+
+    background: rgba(40,40,40,.65);
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    display: none;
+
+    backdrop-filter: blur(10px);
+}
+
+.music-button.playing {
+    animation: musicRotate 3s linear infinite;
+}
+
+@keyframes musicRotate {
+
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =================================
+   FADE ANIMATION
+================================= */
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+
+    .hero-left {
+        width: 210px;
+        left: -80px;
+        bottom: -20px;
+    }
+
+    .hero-right {
+        width: 210px;
+        right: -80px;
+        bottom: -20px;
+    }
+
+    .hero-bottom {
+        width: 330px;
+        bottom: -120px;
+    }
+
+}
+
+/* =================================
+   ORNAMEN HERO
+================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/* Semua ornamen hero */
+.hero-center-ornament,
+.hero-center-left,
+.hero-center-right {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform;
+}
+
+/* Ornamen tengah */
+.hero-center-ornament {
+    width: 1300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate3d(-50%, -50%, 0);
+
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Ornamen kiri bawah */
+.hero-center-left {
+    width: 1300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate3d(-50%, -50%, 0);
+
+    z-index: 2;
+    opacity: 1;
+}
+
+/* Ornamen kanan atas */
+.hero-center-right {
+    width: 1300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate3d(-50%, -50%, 0);
+
+    z-index: 2;
+    opacity: 1;
+}
+
+/* Teks berada paling depan */
+.hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =================================
+   MOBILE HERO ORNAMENT
+================================= */
+
+@media (max-width: 768px) {
+
+    .hero-center-ornament,
+    .hero-center-left,
+    .hero-center-right {
+        width: 330px;
+    }
+
+}
+
+/* =================================
+   ANIMASI BUNGA + FADE IN
+================================= */
+
+/* BUNGA KIRI */
+.hero-center-left {
+    opacity: 0;
+    animation:
+        fadeInFlower 2s ease-out forwards,
+        floatLeft 7s ease-in-out 2s infinite;
+    
+    will-change: transform, opacity;
+}
+
+
+/* BUNGA KANAN */
+.hero-center-right {
+    opacity: 0;
+    animation:
+        fadeInFlower 2.5s ease-out forwards,
+        floatRight 8s ease-in-out 2.5s infinite;
+
+    will-change: transform, opacity;
+}
+
+
+/* =================================
+   FADE IN BUNGA
+================================= */
+
+@keyframes fadeInFlower {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =================================
+   GERAKAN BUNGA KIRI
+================================= */
+
+@keyframes floatLeft {
+
+    0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate3d(
+            calc(-50% - 5px),
+            calc(-50% + 3px),
+            0
+        ) rotate(-0.3deg);
+    }
+
+    50% {
+        transform: translate3d(
+            calc(-50% - 10px),
+            calc(-50% + 6px),
+            0
+        ) rotate(-0.6deg);
+    }
+
+    75% {
+        transform: translate3d(
+            calc(-50% - 5px),
+            calc(-50% + 3px),
+            0
+        ) rotate(-0.3deg);
+    }
+
+    100% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+
+}
+
+
+/* =================================
+   GERAKAN BUNGA KANAN
+================================= */
+
+@keyframes floatRight {
+
+    0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate3d(
+            calc(-50% + 5px),
+            calc(-50% - 3px),
+            0
+        ) rotate(0.3deg);
+    }
+
+    50% {
+        transform: translate3d(
+            calc(-50% + 10px),
+            calc(-50% - 6px),
+            0
+        ) rotate(0.6deg);
+    }
+
+    75% {
+        transform: translate3d(
+            calc(-50% + 5px),
+            calc(-50% - 3px),
+            0
+        ) rotate(0.3deg);
+    }
+
+    100% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+
+}
+
+/* =================================
+   RSVP SECTION
+================================= */
+
+.rsvp-section {
+    position: relative;
+    padding: 120px 20px;
+    background: #eee7dd;
+    overflow: hidden;
+    text-align: center;
+}
+
+.rsvp-container {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    margin: auto;
+}
+
+/* HEADING */
+
+.rsvp-small-title {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8b7560;
+}
+
+.rsvp-heading h2 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: #493d34;
+}
+
+.rsvp-heading p {
+    max-width: 500px;
+    margin: 25px auto 0;
+    line-height: 1.9;
+    font-size: 14px;
+    color: #75685e;
+}
+
+.rsvp-line {
+    width: 60px;
+    height: 1px;
+    margin: 20px auto;
+    background: #a89582;
+}
+
+/* CARD */
+
+.rsvp-card {
+    margin-top: 45px;
+    padding: 40px 35px;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(130,110,90,0.18);
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 50px rgba(70,55,40,0.08);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    text-align: left;
+}
+
+.rsvp-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.rsvp-card-top span {
+    color: #a89582;
+}
+
+.rsvp-card-top p {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #75685e;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #5d5046;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+
+    border: 1px solid rgba(120,100,80,0.2);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.75);
+
+    color: #4d433b;
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #a89582;
+
+    box-shadow:
+        0 0 0 3px rgba(168,149,130,0.1);
+}
+
+/* ATTENDANCE */
+
+.attendance-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.attendance-option {
+    cursor: pointer;
+}
+
+.attendance-option input {
+    display: none;
+}
+
+.attendance-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 14px;
+
+    border: 1px solid rgba(120,100,80,0.2);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.55);
+
+    color: #66594f;
+
+    transition:
+        all .3s ease;
+}
+
+.attendance-icon {
+    font-size: 16px;
+}
+
+.attendance-option input:checked + .attendance-box {
+    background: #6d5b4c;
+    border-color: #6d5b4c;
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(70,55,40,0.15);
+}
+
+/* BUTTON */
+
+.rsvp-button {
+    width: 100%;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    padding: 15px 20px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #594b40;
+    color: white;
+
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.rsvp-button:hover {
+    transform: translateY(-3px);
+
+    background: #4b3e34;
+
+    box-shadow:
+        0 10px 25px rgba(70,55,40,0.18);
+}
+
+.button-arrow {
+    font-size: 18px;
+    transition: transform .3s ease;
+}
+
+.rsvp-button:hover .button-arrow {
+    transform: translateX(5px);
+}
+
+/* THANK YOU */
+
+.rsvp-thankyou {
+    margin-top: 35px;
+}
+
+.rsvp-thankyou span {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 22px;
+    color: #a89582;
+}
+
+.rsvp-thankyou p {
+    margin: 0;
+
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: #75685e;
+}
+
+/* ORNAMENT */
+
+.rsvp-ornament {
+    position: absolute;
+
+    font-family: Georgia, serif;
+    font-size: 180px;
+
+    color: rgba(130,105,80,0.08);
+
+    pointer-events: none;
+}
+
+.rsvp-ornament-left {
+    left: -60px;
+    top: 20%;
+    transform: rotate(-30deg);
+}
+
+.rsvp-ornament-right {
+    right: -60px;
+    bottom: 15%;
+    transform: rotate(150deg);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .rsvp-section {
+        padding: 90px 18px;
+    }
+
+    .rsvp-heading h2 {
+        font-size: 42px;
+    }
+
+    .rsvp-card {
+        padding: 30px 22px;
+    }
+
+    .attendance-options {
+        grid-template-columns: 1fr;
+    }
+
+    .rsvp-ornament {
+        font-size: 120px;
+    }
+
+}
+
+
+/* =================================
+   MOBILE RESPONSIVE FIX
+   Tambahkan di paling bawah style.css
+================================= */
+
+@media (max-width: 768px) {
+
+    /* GLOBAL SECTION */
+    .section {
+        padding: 75px 0;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .section-title > p {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    /* OPENING / COVER */
+    .opening {
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+
+    .opening-content {
+        width: 100%;
+        padding: 35px 20px;
+        margin: auto;
+    }
+
+    .opening h1 {
+        font-size: clamp(54px, 15vw, 85px);
+        line-height: 0.9;
+    }
+
+    .opening-label {
+        letter-spacing: 3px;
+    }
+
+    .opening-guest {
+        margin: 25px 0;
+    }
+
+    .opening-footer {
+        margin-top: 25px;
+    }
+
+    .opening-button {
+        min-height: 48px;
+        padding: 14px 24px;
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 100vh;
+        min-height: 100svh;
+    }
+
+    .hero-content {
+        width: 90%;
+        padding: 20px 0;
+    }
+
+    .hero-content h2 {
+        font-size: clamp(58px, 14vw, 90px);
+        line-height: 0.9;
+    }
+
+    .small-text {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    /* QUOTE */
+    .quote-text {
+        font-size: clamp(25px, 7vw, 34px);
+        padding: 0 10px;
+    }
+
+    /* COUPLE */
+    .couple-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .person-photo {
+        width: min(280px, 85%);
+        height: auto;
+        aspect-ratio: 7 / 9;
+    }
+
+    .person h3 {
+        font-size: clamp(32px, 8vw, 42px);
+        padding: 0 10px;
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+    }
+
+    .time-box {
+        min-width: 0;
+    }
+
+    .time-box span {
+        font-size: clamp(27px, 8vw, 42px);
+    }
+
+    .time-box small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    /* EVENT */
+    .event-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .event-card {
+        padding: 40px 20px;
+    }
+
+    .event-card h3 {
+        font-size: 38px;
+    }
+
+    .event-card p {
+        overflow-wrap: anywhere;
+    }
+
+    .map-button {
+        min-height: 44px;
+        padding: 14px 20px;
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .gallery-item img {
+        aspect-ratio: 1 / 1.2;
+    }
+
+    /* RSVP */
+    .rsvp-section {
+        padding: 75px 18px;
+    }
+
+    .rsvp-card {
+        padding: 25px 18px;
+    }
+
+    .rsvp-heading p {
+        font-size: 13px;
+    }
+
+    .rsvp-card-top {
+        gap: 8px;
+    }
+
+    .rsvp-card-top p {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .attendance-options {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+    }
+
+    .rsvp-button {
+        min-height: 48px;
+        font-size: 12px;
+    }
+
+    /* CLOSING */
+    .closing {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 40px 20px;
+    }
+
+    .closing-content h2 {
+        font-size: clamp(58px, 14vw, 90px);
+    }
+
+    .closing-content p {
+        font-size: 11px;
+        line-height: 1.8;
+    }
+
+    /* MUSIC BUTTON */
+    .music-button {
+        width: 46px;
+        height: 46px;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+/* HP KECIL */
+@media (max-width: 380px) {
+
+    .countdown {
+        gap: 4px;
+    }
+
+    .time-box span {
+        font-size: 26px;
+    }
+
+    .time-box small {
+        font-size: 7px;
+        letter-spacing: 0;
+    }
+
+    .opening h1 {
+        font-size: 54px;
+    }
+
+    .opening-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .rsvp-card {
+        padding: 22px 14px;
+    }
+}
+
+/* =================================
+   OPENING SLIDE UP
+================================= */
+
+#opening {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    transform: translateY(0);
+
+    transition:
+        transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+/* Saat tombol dibuka */
+
+#opening.slide-up {
+    transform: translateY(-100%);
+}
+
+
+/* Cegah halaman bergerak
+   selama opening */
+
+body.opening-active {
+    overflow: hidden;
+}
